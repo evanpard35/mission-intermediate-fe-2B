@@ -1,0 +1,71 @@
+.carousel {
+    padding: 20px;
+    background-color: #161616;
+    position: relative; /* For positioning buttons */
+}
+
+.carousel h2 {
+    font-family: "Lato", sans-serif;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.carousel-items {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0; /* Add padding for better touch targets */
+}
+
+.carousel-items::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel-items::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+.carousel-items::-webkit-scrollbar-track {
+    background-color: #161616;
+}
+
+.card {
+    flex: 0 0 auto; /* Prevent cards from shrinking */
+    width: 150px; /* Adjust width for smaller screens */
+}
+
+@media (min-width: 600px) {
+    .card {
+        width: 200px; /* Adjust for medium screens */
+    }
+}
+
+@media (min-width: 900px) {
+    .card {
+        width: 250px; /* Adjust for larger screens */
+    }
+}
+
+.carousel-button {
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.carousel-button.left {
+    left: 10px;
+}
+
+.carousel-button.right {
+    right: 10px;
+}
+
