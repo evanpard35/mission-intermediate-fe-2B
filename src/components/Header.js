@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Header.css';
 import { FaUser, FaStar, FaSignOutAlt } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+
 
 function Header() {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+    const navigate = useNavigate();
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
@@ -14,9 +17,27 @@ function Header() {
         setMobileMenuVisible(!mobileMenuVisible);
     };
 
-    // Efek untuk menutup dropdown ketika klik di luar area dropdown
+    const handleLogout = () => {
+        localStorage.removeItem('user');
+        navigate('/login');
+    };
+
+    const handleMyListClick = () => {
+        navigate('/my-list');
+    };
+
+    const handleSeriesClick = () => {
+        navigate('/');
+    };
+
+    const handleFilmClick = () => {
+        navigate('/');
+    };
+
+
+
     useEffect(() => {
-        // Fungsi untuk mendeteksi klik di luar area dropdown
+
         const handleClickOutside = (event) => {
             if (!event.target.closest('.profile-menu') && !event.target.closest('.mobile-menu')) {
                 setDropdownVisible(false);
@@ -24,10 +45,10 @@ function Header() {
             }
         };
 
-        // Menambahkan event listener pada dokumen
+
         document.addEventListener('mousedown', handleClickOutside);
 
-        // Membersihkan event listener saat komponen unmount
+
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
@@ -39,9 +60,9 @@ function Header() {
             <div className="navbar-left">
                 <img src="./img/Vector.svg" alt="Logo" className="logo" />
                 <span className="brand-name">CHILL</span>
-                <a href="#" className="nav-link">Series</a>
-                <a href="#" className="nav-link">Film</a>
-                <a href="#" className="nav-link">Daftar Saya</a>
+                <a href="#" className="nav-link" onClick={handleSeriesClick}>Series</a>
+                <a href="#" className="nav-link" onClick={handleFilmClick}>Film</a>
+                <a href="#" className="nav-link" onClick={handleMyListClick}>Daftar Saya</a>
             </div>
             <div className="navbar-right">
                 <div className="profile-menu" onClick={toggleDropdown}>
@@ -54,7 +75,7 @@ function Header() {
                             <a href="#" className="dropdown-item">
                                 <FaStar /> Ubah Premium
                             </a>
-                            <a href="#" className="dropdown-item">
+                            <a href="#" className="dropdown-item" onClick={handleLogout}>
                                 <FaSignOutAlt /> Keluar
                             </a>
                         </div>

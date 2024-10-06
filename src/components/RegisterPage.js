@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Auth.css';
 
 const RegisterPage = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+
+        if (password !== confirmPassword) {
+            alert("Password dan konfirmasi password tidak cocok!");
+            return;
+        }
+
+        const userData = { username, password };
+        localStorage.setItem('user', JSON.stringify(userData));
+
+        alert("Registrasi berhasil! Silakan login.");
+        window.location.href = '/login';
+    };
+
     return (
         <div className="auth-container" style={{ backgroundImage: 'url(/img/background.jpeg)' }}>
             <div className="auth-form">
@@ -15,18 +34,36 @@ const RegisterPage = () => {
                 </div>
                 <p className="auth-subtitle-daftar">Daftar</p>
                 <p className="auth-subtitle">Selamat datang!</p>
-                <form>
+                <form onSubmit={handleRegister}>
                     <div className="auth-input-group">
                         <label htmlFor="username">Username</label>
-                        <input type="text" id="username" placeholder="Masukkan username" />
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Masukkan username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
                     </div>
                     <div className="auth-input-group">
                         <label htmlFor="password">Kata Sandi</label>
-                        <input type="password" id="password" placeholder="Masukkan kata sandi" />
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Masukkan kata sandi"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
                     </div>
                     <div className="auth-input-group">
                         <label htmlFor="confirm-password">Konfirmasi Kata Sandi</label>
-                        <input type="password" id="confirm-password" placeholder="Masukkan kata sandi" />
+                        <input
+                            type="password"
+                            id="confirm-password"
+                            placeholder="Masukkan kata sandi"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
                     </div>
                     <div className="auth-links">
                         <a href="/login">Sudah punya akun? Masuk</a>

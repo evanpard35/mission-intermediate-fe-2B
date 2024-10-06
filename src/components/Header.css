@@ -132,6 +132,19 @@ body {
         font-size: 24px; 
     }
 
+    .logo {
+    width: 30px;
+    margin-left: 10px;
+    }
+
+     .nav-link {
+        margin-left: 0; 
+        padding: 15px 5px;
+        width: 100%; 
+        text-align: left; 
+        font-size: small;
+    }
+
     .dropdown-menu {
         font-size: 12px;
         width: 130px; 

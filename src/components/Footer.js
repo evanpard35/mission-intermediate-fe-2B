@@ -6,12 +6,12 @@ const Footer = () => {
     const [isGenreOpen, setIsGenreOpen] = useState(false);
     const [isBantuanOpen, setIsBantuanOpen] = useState(false);
 
-    // Function to check screen size and set mobile state
+
     const checkScreenSize = () => {
         setIsMobile(window.innerWidth < 768);
     };
 
-    // Listen for screen resize to update mobile state
+
     useEffect(() => {
         window.addEventListener("resize", checkScreenSize);
         return () => {

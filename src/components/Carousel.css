@@ -1,7 +1,7 @@
 .carousel {
     padding: 20px;
     background-color: #161616;
-    position: relative; /* For positioning buttons */
+    position: relative; 
 }
 
 .carousel h2 {
@@ -14,38 +14,40 @@
 .carousel-items {
     display: flex;
     gap: 15px;
-    overflow-x: auto;
+    overflow-x: scroll; 
     scroll-behavior: smooth;
-    padding: 10px 0; /* Add padding for better touch targets */
+    padding: 10px 0; 
+    scrollbar-width: none; 
 }
+
 
 .carousel-items::-webkit-scrollbar {
-    height: 8px;
-}
-
-.carousel-items::-webkit-scrollbar-thumb {
-    background-color: #555;
-    border-radius: 4px;
-}
-
-.carousel-items::-webkit-scrollbar-track {
-    background-color: #161616;
+    display: none;
 }
 
 .card {
-    flex: 0 0 auto; /* Prevent cards from shrinking */
-    width: 150px; /* Adjust width for smaller screens */
+    flex: 0 0 auto;
+    width: 150px;
 }
+.btn-mulai:hover, .btn-selengkapnya:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 
 @media (min-width: 600px) {
     .card {
-        width: 200px; /* Adjust for medium screens */
+        width: 200px;
+    }
+}
+@media (max-width: 480px) {
+    .carousel h2 {
+    font-size: 1rem;
     }
 }
 
 @media (min-width: 900px) {
     .card {
-        width: 250px; /* Adjust for larger screens */
+        width: 250px;
     }
 }
 
@@ -68,4 +70,3 @@
 .carousel-button.right {
     right: 10px;
 }
-

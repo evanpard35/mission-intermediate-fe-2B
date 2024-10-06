@@ -1,10 +1,9 @@
-
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import Card from './Card';
 import './Carousel.css';
 
-const Carousel = ({ title, movies }) => {
+const Carousel = ({ title, movies, addToMyList }) => {
     const carouselRef = useRef(null);
     const touchStartX = useRef(0);
 
@@ -50,7 +49,7 @@ const Carousel = ({ title, movies }) => {
                 onTouchMove={handleTouchMove}
             >
                 {movies.map((movie, index) => (
-                    <Card key={index} movie={movie} />
+                    <Card key={index} movie={movie} addToMyList={addToMyList} />
                 ))}
             </div>
             <button
@@ -67,7 +66,7 @@ const Carousel = ({ title, movies }) => {
 Carousel.propTypes = {
     title: PropTypes.string.isRequired,
     movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+    addToMyList: PropTypes.func.isRequired,
 };
 
 export default Carousel;
-
